@@ -5,19 +5,30 @@ using UnityEngine;
 public class Cube : MonoBehaviour
 {
     public MeshRenderer Renderer;
-    
+    public Vector3 cubeLocation = new Vector3(3, 4, 1);
+    public float cubeRotate;
+    public float cubeRotateSpeed = 2.0f;
+ 
     void Start()
     {
-        transform.position = new Vector3(3, 4, 1);
-        transform.localScale = Vector3.one * 1.3f;
-        
-        Material material = Renderer.material;
-        
-        material.color = new Color(0.5f, 1.0f, 0.3f, 0.4f);
+        CubeSetting();
     }
     
     void Update()
     {
-        transform.Rotate(10.0f * Time.deltaTime, 0.0f, 0.0f);
+        transform.Rotate(cubeRotate, cubeRotate, cubeRotate);
+    }
+
+    void CubeSetting()
+    {
+        cubeRotate = Random.Range(0f, 30.0f)*Time.deltaTime*cubeRotateSpeed;
+
+        transform.position = cubeLocation;
+        transform.localScale = Vector3.one * 1.3f;
+
+        Material material = Renderer.material;
+
+        
+        material.color = new Color(Random.Range(0.1f,1.0f), Random.Range(0.1f, 1.0f), Random.Range(0.1f, 1.0f), Random.Range(0.1f, 1.0f));
     }
 }
