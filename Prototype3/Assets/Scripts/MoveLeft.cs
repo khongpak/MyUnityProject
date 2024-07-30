@@ -6,6 +6,7 @@ public class MoveLeft : MonoBehaviour
 {
     public float moveSpeed = 30f;
     private PlayerController playerControllerScript;
+    private float leftBound = -15f;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,11 @@ public class MoveLeft : MonoBehaviour
         if (playerControllerScript.gameOver == false)
         {
             transform.Translate(Vector3.left * Time.deltaTime * moveSpeed);
+        }
+
+        if (transform.position.x < leftBound && gameObject.CompareTag("obstacle"))
+        {
+            Destroy(gameObject);
         }
     }
 }
