@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerControllerX : MonoBehaviour
 {
     public bool gameOver;
+    public float bound = 500f;
 
     public float floatForce;
     private float gravityModifier = 1.5f;
@@ -12,10 +13,14 @@ public class PlayerControllerX : MonoBehaviour
 
     public ParticleSystem explosionParticle;
     public ParticleSystem fireworksParticle;
+    
 
     private AudioSource playerAudio;
     public AudioClip moneySound;
     public AudioClip explodeSound;
+    public AudioClip warning;
+
+
 
 
     // Start is called before the first frame update
@@ -23,6 +28,8 @@ public class PlayerControllerX : MonoBehaviour
     {
         Physics.gravity *= gravityModifier;
         playerAudio = GetComponent<AudioSource>();
+        playerRb = GetComponent<Rigidbody>();
+     
 
         // Apply a small upward force at the start of the game
         playerRb.AddForce(Vector3.up * 5, ForceMode.Impulse);
@@ -32,10 +39,20 @@ public class PlayerControllerX : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.y >= 16.5f)
+        {
+            
+            transform.Translate(0, 16.5f - transform.position.y, 0);
+            playerRb.velocity = Vector3.zero;
+            
+            //playerRb.AddForce(Vector3.down * 5, ForceMode.Impulse);
+
+        }
+
         // While space is pressed and player is low enough, float up
         if (Input.GetKey(KeyCode.Space) && !gameOver)
         {
-            playerRb.AddForce(Vector3.up * floatForce);
+            playerRb.AddForce(Vector3.up * floatForce,ForceMode.Impulse);
         }
     }
 
@@ -58,6 +75,13 @@ public class PlayerControllerX : MonoBehaviour
             playerAudio.PlayOneShot(moneySound, 1.0f);
             Destroy(other.gameObject);
 
+        } 
+        
+        else if (other.gameObject.CompareTag("ground"))
+        {
+            playerRb.AddForce(Vector3.up * bound, ForceMode.Impulse);
+            playerAudio.PlayOneShot(warning, 1.0f);
+           
         }
 
     }
