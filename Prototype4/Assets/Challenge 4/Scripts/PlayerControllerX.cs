@@ -21,22 +21,24 @@ public class PlayerControllerX : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody>();
         focalPoint = GameObject.Find("Focal Point");
+        
     }
 
     void Update()
     {
+        
         // Add force to player in direction of the focal point (and camera)
         float verticalInput = Input.GetAxis("Vertical");
         if (Input.GetKeyDown(KeyCode.Space))
         {
             playerRb.AddForce(focalPoint.transform.forward * verticalInput * speedBoot* Time.deltaTime);
             dirtPartice.Play();
-            Debug.Log("SpaceBar " + speed);
+            
         }
         else
         {
             playerRb.AddForce(focalPoint.transform.forward * verticalInput * speed * Time.deltaTime);
-            dirtPartice.Stop();
+            
         }
        
 
