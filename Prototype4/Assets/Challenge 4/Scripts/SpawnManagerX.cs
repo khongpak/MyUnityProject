@@ -17,9 +17,12 @@ public class SpawnManagerX : MonoBehaviour
 
     public GameObject player;
     public GameObject focalPoint;
+
+
     private void Start()
     {
         focalPoint = GameObject.Find("Focal Point");
+       
     }
     // Update is called once per frame
     void Update()
@@ -29,6 +32,7 @@ public class SpawnManagerX : MonoBehaviour
         if (enemyCount == 0)
         {
             SpawnEnemyWave(waveCount);
+            
         }
 
     }
