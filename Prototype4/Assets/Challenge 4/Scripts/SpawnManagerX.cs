@@ -15,8 +15,15 @@ public class SpawnManagerX : MonoBehaviour
     public int waveCount = 1;
 
 
-    public GameObject player; 
+    public GameObject player;
+    public GameObject focalPoint;
 
+
+    private void Start()
+    {
+        focalPoint = GameObject.Find("Focal Point");
+       
+    }
     // Update is called once per frame
     void Update()
     {
@@ -25,6 +32,7 @@ public class SpawnManagerX : MonoBehaviour
         if (enemyCount == 0)
         {
             SpawnEnemyWave(waveCount);
+            
         }
 
     }
@@ -62,9 +70,11 @@ public class SpawnManagerX : MonoBehaviour
     // Move player back to position in front of own goal
     void ResetPlayerPosition ()
     {
+        
         player.transform.position = new Vector3(0, 1, -7);
         player.GetComponent<Rigidbody>().velocity = Vector3.zero;
         player.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        focalPoint.transform.rotation = Quaternion.identity;
 
     }
 
