@@ -1,0 +1,10 @@
+diff a/Lab Project/Assets/Scenes/My Game.unity b/Lab Project/Assets/Scenes/My Game.unity	(rejected hunks)
+@@ -134,6 +134,8 @@
+   - component: {fileID: 153902204}
+   - component: {fileID: 153902203}
+   - component: {fileID: 153902202}
++  - component: {fileID: 153902207}
++  - component: {fileID: 153902206}
+   m_Layer: 0
+   m_Name: Enemy4
+   m_TagString: Untagged
