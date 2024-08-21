@@ -10,23 +10,36 @@ public class GameManager : MonoBehaviour
     public List<GameObject> targets;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
+    public TextMeshProUGUI liveText;
     public bool isGameActive;
     public Button restartButton;
     public GameObject titleScreen;
+    public int live = 3;
+    //public AudioManager audioManager;
+    public GameObject pauseScreen;
+    private bool paused;
+
     private int score;
     private float spawnRate = 1.0f;
-    
+
+
     // Start is called before the first frame update
     void Start()
     {
-      
-        
+        //audioManager = GameObject.Find("AudioController").GetComponent<AudioManager>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateLive();
+        //audioManager.AudioController();
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            ChangePaused();
+        }
+
     }
 
     IEnumerator SpawnTarget()
@@ -38,13 +51,25 @@ public class GameManager : MonoBehaviour
             Instantiate(targets[index]);
 
         }
-        
+
     }
 
     public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
         scoreText.text = "Score : " + score;
+    }
+
+    public void UpdateLive()
+    {
+        if (live > 0)
+        {
+            liveText.text = "Live: " + live;
+        }
+        else
+        {
+            liveText.text = "Live: 0";
+        }
     }
 
     public void GameOver()
@@ -70,5 +95,21 @@ public class GameManager : MonoBehaviour
 
         titleScreen.gameObject.SetActive(false);
 
+    }
+
+    void ChangePaused()
+    {
+        if (!paused)
+        {
+            paused = true;
+            pauseScreen.SetActive(true);
+            Time.timeScale = 0;
+        }
+        else
+        {
+            paused = false;
+            pauseScreen.SetActive(false);
+            Time.timeScale = 1;
+        }
     }
 }
