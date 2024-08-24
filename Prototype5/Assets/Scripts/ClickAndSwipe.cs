@@ -31,12 +31,12 @@ public class ClickAndSwipe : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 swiping = true;
-                UpdateComponent();
+                UpdateComponents();
             }
             else if (Input.GetMouseButtonUp(0))
             {
                 swiping = false;
-                UpdateComponent();
+                UpdateComponents();
             }
 
             if (swiping)
@@ -52,7 +52,7 @@ public class ClickAndSwipe : MonoBehaviour
         transform.position = mousePos;
     }
 
-    void UpdateComponent()
+    void UpdateComponents()
     {
         trail.enabled = swiping;
         col.enabled = swiping;
