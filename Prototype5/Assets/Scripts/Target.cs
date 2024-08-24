@@ -31,6 +31,7 @@ public class Target : MonoBehaviour
         
     }
 
+    
     private void OnMouseDown()
     {
         if (gameManager.isGameActive)
@@ -41,6 +42,7 @@ public class Target : MonoBehaviour
         }
        
     }
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -53,6 +55,16 @@ public class Target : MonoBehaviour
                 gameManager.GameOver();
             }
             
+        }
+    }
+
+    public void DestroyTarget()
+    {
+        if (gameManager.isGameActive)
+        {
+            Destroy(gameObject);
+            Instantiate(explosionParticle,transform.position, explosionParticle.transform.rotation);
+            gameManager.UpdateScore(pointValue);
         }
     }
 
