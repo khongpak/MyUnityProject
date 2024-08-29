@@ -5,7 +5,7 @@ using UnityEngine;
 public class FollowerPlayer : MonoBehaviour
 {
     public GameObject player;
-    private Vector3 offset = new Vector3(0f, 5f, -7f);
+    [SerializeField] private Vector3 offset = new Vector3(0f, 5f, -7f);
     bool isFontView;
 
     
