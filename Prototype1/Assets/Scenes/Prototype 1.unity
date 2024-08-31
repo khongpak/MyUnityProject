@@ -458,7 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7788f65de2d5b6c44bae42f71993eb37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  horsePower: 20000
   turnSpeed: 25
   inputID: 1
 --- !u!54 &53494853
@@ -2273,7 +2273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7788f65de2d5b6c44bae42f71993eb37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  horsePower: 0
   turnSpeed: 25
   inputID: 
 --- !u!54 &638721726
