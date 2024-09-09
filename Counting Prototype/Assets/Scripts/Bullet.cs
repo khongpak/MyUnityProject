@@ -20,4 +20,12 @@ public class Bullet : MonoBehaviour
         bulletRb.AddForce(Vector3.forward*bulletForce,ForceMode.Force);
         //transform.position = new Vector3(transform.position.x , transform.position.y, transform.position.z + 0.1f);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("BoundDestory"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }

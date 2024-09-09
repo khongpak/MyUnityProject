@@ -27,4 +27,12 @@ public class EnemyMove : MonoBehaviour
             gameManager.AddScore();
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("BoundDestory"))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
