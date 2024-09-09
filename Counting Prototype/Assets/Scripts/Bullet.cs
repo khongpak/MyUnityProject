@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] Rigidbody bulletRb;
     [SerializeField] float bulletForce = 20.0f;
+    [SerializeField] ParticleSystem bomExplosionParticle;
     //[SerializeField] float bulletSpeed = 10f;
     // Start is called before the first frame update
     void Start()
@@ -28,4 +29,6 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+   
 }
