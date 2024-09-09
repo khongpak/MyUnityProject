@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletRb: {fileID: 0}
-  bulletForce: 30
+  bulletForce: 40
   bomExplosionParticle: {fileID: 6664606024328010531}
 --- !u!54 &1278945552195471819
 Rigidbody:
