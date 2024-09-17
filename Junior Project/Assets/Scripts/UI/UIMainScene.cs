@@ -76,9 +76,9 @@ public class UIMainScene : MonoBehaviour
         }
     }
 
-    public void LoadNextScene(string sceneName)
+    public void BackToMenu()
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(0);
     }
 
   
