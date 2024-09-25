@@ -23,14 +23,14 @@ public class MainManager : MonoBehaviour
     
     private bool m_GameOver = false;
 
+    private string playerHightScoreName;
+    private int playerHightPoint;
     
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(DataManager.instance.playerName);
-        Debug.Log(DataManager.instance.Get_Point());
-
-        bestScoreText.text = "Best Score : " + DataManager.instance.playerName +" : " + DataManager.instance.Get_Point().ToString();
+        
+        currentHightScore();
 
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
@@ -65,11 +65,19 @@ public class MainManager : MonoBehaviour
         }
         else if (m_GameOver)
         {
-            DataManager.instance.Set_Point(m_Points);
+            
+
+            if (DataManager.instance.checkHightScore(m_Points))
+            {
+                DataManager.instance.saveHightScore(DataManager.instance.playerName, m_Points);
+            }
+            
+            currentHightScore();
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                
             }
         }
     }
@@ -84,5 +92,13 @@ public class MainManager : MonoBehaviour
     {
         m_GameOver = true;
         GameOverText.SetActive(true);
+    }
+
+    void currentHightScore()
+    {
+        DataManager.instance.loadHightScore();
+        playerHightScoreName = DataManager.instance.hightPlayerName;
+        playerHightPoint = DataManager.instance.hightPlayerPoint;
+        bestScoreText.text = "Best Score : " + playerHightScoreName + " : " + playerHightPoint;
     }
 }

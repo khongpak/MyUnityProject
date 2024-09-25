@@ -4,19 +4,22 @@ using System.IO;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 
 public class DataManager : MonoBehaviour
 {
     public static DataManager instance;
-
+    public TextMeshProUGUI bestScore;
     public TMP_InputField namePlayerInput;
 
     public string playerName;
     private int currentPoint;
 
-    string hightPlayerName;
-    int hightPlayerPoint;
+    public string hightPlayerName;
+    public int hightPlayerPoint;
 
     private void Awake()
     {
@@ -30,10 +33,21 @@ public class DataManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    
     public void StartGame()
     {
+        //saveHightScore("Z", 0);
         playerName = namePlayerInput.text;
         SceneManager.LoadScene(1);
+    }
+
+    public void ExitGame()
+    {
+        #if UNITY_EDITOR
+            EditorApplication.ExitPlaymode();
+        #else
+            Application.Quit(); // original code to quit Unity player
+        #endif
     }
 
     public void Set_Point(int point)
@@ -53,11 +67,11 @@ public class DataManager : MonoBehaviour
         public int point;
     }
 
-    public void saveHightScore()
+    public void saveHightScore(string name,int point)
     {
         SaveData data = new SaveData();
-        data.name = "Demo Name";
-        data.point = 10;
+        data.name = name;
+        data.point = point;
 
         string json = JsonUtility.ToJson(data);
         File.WriteAllText(Application.persistentDataPath+"/savefile.json",json);
@@ -65,7 +79,7 @@ public class DataManager : MonoBehaviour
 
     public void loadHightScore()
     {
-        string path = Application.persistentDataPath + "savefile.json";
+        string path = Application.persistentDataPath + "/savefile.json";
         if (File.Exists(path))
         {
             string json = File.ReadAllText(path);
@@ -77,9 +91,9 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    public bool checkHightScore(int currentPoint,int hightPoint)
+    public bool checkHightScore(int currentPoint)
     {
-        if (currentPoint > hightPoint)
+        if (currentPoint > hightPlayerPoint)
         {
             return true;
         }
