@@ -38,4 +38,9 @@ public class ProductivityUnit : Unit // replace MonoBehaviour with Unit
         base.GoTo(target); // run method from base class
     }
 
+    public override void GoTo(Vector3 position)
+    {
+        ResetProductivity();
+        base.GoTo(position);
+    }
 }
