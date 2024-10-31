@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointsPerLevel: 200
-  levelUp:
+  onLevelUp:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1567922392}
