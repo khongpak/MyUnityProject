@@ -14,6 +14,15 @@ public class Drive : MonoBehaviour
     {
 
     }
+
+    void CalculateAngle()
+    {
+        Vector3 tankForward = transform.up;
+        Vector3 fuelDirection = fuel.transform.position - transform.position;
+
+        Debug.DrawRay(this.transform.position, tankForward*10, Color.green, 2);
+        Debug.DrawRay(this.transform.position, fuelDirection,Color.red, 2);
+    }
     void CalculateDistance()
     {
         float distance = Mathf.Sqrt(Mathf.Pow(fuel.transform.position.x - transform.position.x,2) +
@@ -51,6 +60,7 @@ public class Drive : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             CalculateDistance();
+            CalculateAngle();
         }
     }
 }
