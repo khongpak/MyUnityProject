@@ -22,6 +22,20 @@ public class Drive : MonoBehaviour
 
         Debug.DrawRay(this.transform.position, tankForward*10, Color.green, 2);
         Debug.DrawRay(this.transform.position, fuelDirection,Color.red, 2);
+
+        float dot = (tankForward.x * fuelDirection.x) + (tankForward.y * fuelDirection.y);
+        float angle = Mathf.Acos( dot / (tankForward.magnitude * fuelDirection.magnitude));
+        
+        Debug.Log("Angle :" + angle * Mathf.Rad2Deg);
+        Debug.Log("Angle : " + Vector3.Angle(tankForward,fuelDirection));
+
+        int clockwise = 1;
+        if (Cross(tankForward,fuelDirection).z < 0)
+        {
+            clockwise = -1;
+        }
+
+        this.transform.Rotate(0, 0, angle * Mathf.Rad2Deg * clockwise);
     }
     void CalculateDistance()
     {
@@ -38,6 +52,16 @@ public class Drive : MonoBehaviour
         Debug.Log("U Distance :" + uDistance);
         Debug.Log("V Magnitude :" + tankTofuel.magnitude);
         Debug.Log("V SqMagnitude :" + tankTofuel.sqrMagnitude);
+
+       
+    }
+
+    Vector3 Cross(Vector3 v,Vector3 w)
+    {
+        float xMult = v.y * w.z - v.z * w.y;
+        float yMult = v.x * w.z - v.z * w.x;
+        float zMult = v.x * w.y - v.y * w.x;
+        return (new Vector3(xMult, yMult, zMult));
     }
     void Update()
     {
