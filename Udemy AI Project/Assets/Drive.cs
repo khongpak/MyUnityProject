@@ -9,12 +9,20 @@ public class Drive : MonoBehaviour
     public float speed = 10.0f;
     public float rotationSpeed = 100.0f;
     public GameObject fuel;
+    float tspeed = 10f;
+    bool autopilot = false;
+    float rspeed = 0.2f;
 
     void Start()
     {
 
     }
 
+    void Autopilot()
+    {
+        CalculateAngle();
+        this.transform.position += this.transform.up * tspeed * Time.deltaTime;
+    }
     void CalculateAngle()
     {
         Vector3 tankForward = transform.up;
@@ -34,10 +42,12 @@ public class Drive : MonoBehaviour
         {
             clockwise = -1;
         }
-
-        this.transform.Rotate(0, 0, angle * Mathf.Rad2Deg * clockwise);
+        if (angle * Mathf.Rad2Deg > 10)
+        {
+            this.transform.Rotate(0, 0, angle * Mathf.Rad2Deg * clockwise * rspeed);
+        }
     }
-    void CalculateDistance()
+    float CalculateDistance()
     {
         float distance = Mathf.Sqrt(Mathf.Pow(fuel.transform.position.x - transform.position.x,2) +
                                     Mathf.Pow(fuel.transform.position.z - transform.position.z, 2));
@@ -53,7 +63,7 @@ public class Drive : MonoBehaviour
         Debug.Log("V Magnitude :" + tankTofuel.magnitude);
         Debug.Log("V SqMagnitude :" + tankTofuel.sqrMagnitude);
 
-       
+       return distance;
     }
 
     Vector3 Cross(Vector3 v,Vector3 w)
@@ -86,5 +96,20 @@ public class Drive : MonoBehaviour
             CalculateDistance();
             CalculateAngle();
         }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            autopilot = !autopilot;
+        }
+
+        if(CalculateDistance() < 3)
+        {
+            autopilot = false;
+        }
+        if (autopilot)
+        {
+            Autopilot();
+        }
+
     }
 }
