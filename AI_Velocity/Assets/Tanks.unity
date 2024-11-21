@@ -163,8 +163,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.05, y: 1.66, z: 1.94}
-  m_Center: {x: 0, y: 0.87, z: 0}
+  m_Size: {x: 1.593745, y: 1.6599998, z: 1.741712}
+  m_Center: {x: -0.009978563, y: 0.86999667, z: -0.09914405}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 729810331}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: tank
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -388,13 +388,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 811624323}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.541, z: 0.905}
+  m_LocalRotation: {x: -0.123321876, y: -0, z: 0.000000011175868, w: 0.9923668}
+  m_LocalPosition: {x: 0, y: 1.634, z: 1.141}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1701700869}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -14.168, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,7 +512,7 @@ Transform:
   m_GameObject: {fileID: 1427919398}
   serializedVersion: 2
   m_LocalRotation: {x: -0.121570066, y: 0.00000008940697, z: 0.0000000037252903, w: 0.9925829}
-  m_LocalPosition: {x: 0.000000054667908, y: 0.5099999, z: 1.0099999}
+  m_LocalPosition: {x: 0, y: 0.53, z: 1.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbbbd88255f7c954a9c8af7b54758bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 4116854366592628623, guid: e4492968e3c59d34da047e15caace311, type: 3}
+  bullet: {fileID: 1158334452484155917, guid: e4492968e3c59d34da047e15caace311, type: 3}
   turret: {fileID: 811624323}
   enemy: {fileID: 620903246}
 --- !u!4 &1701700869 stripped
@@ -543,6 +543,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2887154942990734001, guid: e57a33c6f3b0e4cb2a2af014c265b239, type: 3}
   m_PrefabInstance: {fileID: 1354003426666338538}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1701700870
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1701700867}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.6329845, y: 1.9156452, z: 1.58}
+  m_Center: {x: 0.022999406, y: 0.951492, z: -1.0479666e-16}
 --- !u!4 &2144899305 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5714334409709048953, guid: f8df63ccbdfa54d54833de3ea7e2ce5a, type: 3}
@@ -559,6 +580,10 @@ PrefabInstance:
     - target: {fileID: 2182668876329722018, guid: e57a33c6f3b0e4cb2a2af014c265b239, type: 3}
       propertyPath: m_Name
       value: Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 2182668876329722018, guid: e57a33c6f3b0e4cb2a2af014c265b239, type: 3}
+      propertyPath: m_TagString
+      value: tank
       objectReference: {fileID: 0}
     - target: {fileID: 2887154942990734001, guid: e57a33c6f3b0e4cb2a2af014c265b239, type: 3}
       propertyPath: m_RootOrder
@@ -614,6 +639,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2182668876329722018, guid: e57a33c6f3b0e4cb2a2af014c265b239, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1701700868}
+    - targetCorrespondingSourceObject: {fileID: 2182668876329722018, guid: e57a33c6f3b0e4cb2a2af014c265b239, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1701700870}
   m_SourcePrefab: {fileID: 100100000, guid: e57a33c6f3b0e4cb2a2af014c265b239, type: 3}
 --- !u!1001 &3052892970279238296
 PrefabInstance:
